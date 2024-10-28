@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var viewModel: ViewModel = .init()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("\(viewModel.time)")
+            Button("Run", action: {
+                viewModel.getDate(after: 3)
+            })
+            
+            Button("Stop", action: {
+                viewModel.stopGetDate()
+            })
         }
-        .padding()
     }
 }
 
